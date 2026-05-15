@@ -1,54 +1,246 @@
-# Hola, soy Sebastian Bravo Palacios 👋
-### Analista de Sistemas | Desarrollador Full-Stack | Entusiasta de la Automatización y la Nube
+````md
+<div align="center">
 
-Bienvenido a mi portafolio personal, alojado en **asbit**. Soy un apasionado por la tecnología, el desarrollo de software y la optimización de procesos. Actualmente, me desempeño como Analista de Sistemas en el SENA Centro de Comercio y Servicios (CCYS) en Popayán, Regional Cauca, y curso el programa de Ingeniería de Sistemas en la UNAD.
+# ASBIT
 
-Me especializo en construir soluciones web modernas, automatizar flujos de trabajo complejos y gestionar infraestructura en la nube, siempre con un enfoque en la seguridad y la eficiencia.
+### Full Stack Developer · Systems Engineering Student · SaaS Builder
 
----
+```bash
+Building scalable systems, automation tools and modern web platforms.
+````
 
-## 🛠️ Tecnologías y Herramientas
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&pause=1000&color=58A6FF&center=true&vCenter=true&width=700&lines=Full+Stack+Developer;Backend+%2F+Frontend+Engineer;SaaS+Builder;AI+%26+Automation+Enthusiast;Linux+%26+DevOps+Focused;Building+Digital+Tools+for+Real+Problems" alt="Typing SVG" />
 
-### Frontend & Desarrollo Web
-* **Frameworks/Librerías:** React, Next.js
-* **Lenguajes:** TypeScript, JavaScript
-* **Entorno:** Entornos de desarrollo locales y en producción mediante Vercel y flujos de trabajo CI/CD con GitHub Actions.
-
-### Backend, Bases de Datos & Nube
-* **Bases de Datos:** Supabase (entornos autoalojados y gestionados)
-* **Infraestructura & Seguridad:** Cloudflare (Tunnels, Workers, Access), gestión de dominios y certificados SSL.
-* **Sistemas Operativos:** Ubuntu / Linux
-
-### Automatización & IA
-* **Workflows:** n8n, Power Automate, Google Apps Script
-* **Inteligencia Artificial:** APIs de Gemini, Agentes de IA en n8n, implementaciones con MediaPipe.
+</div>
 
 ---
 
-## 🚀 Proyectos Destacados
+# /about
 
-A lo largo de mi trayectoria, he liderado y desarrollado plataformas enfocadas en resolver problemas reales mediante tecnología:
+```yaml
+name: "A. Sebastian"
+role: "Full Stack Developer"
+location: "Colombia"
+current_position: "Systems Analyst @ SENA"
+education: "Systems Engineering"
+focus:
+  - SaaS Platforms
+  - AI & Automation
+  - Full Stack Development
+  - Cloud & DevOps
+  - Developer Tools
+  - Mobile Applications
+```
 
-* **Sistema de Validación y Matrículas Automatizadas (SENA):** Desarrollo y mantenimiento de un sistema de automatización basado en flujos de IA para el procesamiento de PDFs, verificación de identidad y notificaciones masivas para aprendices.
-* **Plataforma Geclis:** Plataforma especializada con diseño UI/UX propio para la gestión y reporte mensual de obligaciones contractuales.
-* **Extensión Chrome "Compromiso":** Herramienta personalizada de navegador diseñada para revelar opciones de descarga de archivos en plataformas institucionales, optimizando el tiempo del equipo de trabajo.
-* **Plataforma de Capacitación en Seguridad y Privacidad:** Aplicación web desarrollada con Google Apps Script para gestionar el entrenamiento obligatorio en riesgos de seguridad de la información, integrando videos educativos y evaluaciones.
-* **Soporte de Infraestructura Institucional:** Configuración, protección y optimización de plataformas académicas (incluyendo la activación del dominio `senacauca.edu.co`) utilizando túneles seguros y gestión de rotación de turnos para equipos de trabajo 24/7.
+---
+
+# /about-me
+
+## English
+
+I'm a Full Stack Developer and Systems Engineering student focused on building scalable digital products, automation systems and modern web platforms.
+
+Currently working as a Systems Analyst at SENA, where I develop and optimize technological solutions for administrative and educational environments.
+
+My main interests include SaaS architecture, AI integrations, backend systems, cloud infrastructure and developer-focused tooling.
+
+I enjoy building systems that combine clean architecture, automation and real-world utility.
 
 ---
 
-## 📈 Filosofía de Trabajo
-* **Liderazgo Técnico:** Experiencia coordinando equipos de desarrollo, aplicando metodologías como Gitflow y diseñando arquitecturas escalables.
-* **Rendimiento y Hardware:** Interés activo en el hardware de alto rendimiento (plataforma AM5, serie RTX) para asegurar entornos de desarrollo óptimos.
-* **Aprendizaje Continuo:** Siempre explorando nuevas herramientas de IA y metodologías para llevar los proyectos desde un entorno local hasta una producción segura.
+## Español
+
+Soy Full Stack Developer y estudiante de Ingeniería en Sistemas enfocado en construir productos digitales escalables, sistemas de automatización y plataformas web modernas.
+
+Actualmente trabajo como Analista de Sistemas en el SENA, desarrollando y optimizando soluciones tecnológicas para entornos administrativos y educativos.
+
+Mis principales intereses incluyen arquitectura SaaS, integraciones con IA, sistemas backend, infraestructura cloud y herramientas orientadas a desarrolladores.
+
+Me gusta construir sistemas que combinen arquitectura limpia, automatización y utilidad real.
 
 ---
 
-## 📫 Contacto
+# /tech-stack
 
-* **Email:** [Tu Correo Institucional/Personal]
-* **LinkedIn:** [Enlace a tu LinkedIn]
-* **GitHub:** [Enlace a tu GitHub]
+## Languages
+
+<p>
+  <img src="https://skillicons.dev/icons?i=python,js,ts,go" />
+</p>
+
+## Frontend
+
+<p>
+  <img src="https://skillicons.dev/icons?i=react,nextjs,tailwind,vue" />
+</p>
+
+```txt
++ TanStack Ecosystem
+```
+
+## Backend
+
+<p>
+  <img src="https://skillicons.dev/icons?i=nodejs,fastapi,flask,go" />
+</p>
+
+## Databases
+
+<p>
+  <img src="https://skillicons.dev/icons?i=postgres,mongodb,firebase,sqlite,supabase" />
+</p>
+
+## DevOps & Infrastructure
+
+<p>
+  <img src="https://skillicons.dev/icons?i=docker,linux,githubactions,nginx,cloudflare" />
+</p>
 
 ---
-*Este portafolio es un reflejo continuo de mis proyectos, experimentos técnicos y crecimiento profesional.*
+
+# /featured-projects
+
+## 01 — Public Sector SaaS Platform
+
+```txt
+Administrative and productivity tools platform focused on Colombian public sector workflows.
+```
+
+---
+
+## 02 — SENA Administrative Tools
+
+```txt
+Digital systems and workflow solutions for educational and administrative environments.
+```
+
+---
+
+## 03 — PDF Tools Suite
+
+```txt
+Modular PDF processing and document management platform.
+```
+
+---
+
+## 04 — EEG DSI-7 Analysis System
+
+```txt
+Signal processing and analysis tools for EEG experimentation and data interpretation.
+```
+
+---
+
+# /current-focus
+
+```txt
+> Building scalable SaaS systems
+> AI-powered workflows
+> Backend architecture
+> Automation pipelines
+> DevOps & cloud infrastructure
+> Modern frontend ecosystems
+```
+
+---
+
+# /architecture
+
+```txt
+Clean architecture.
+Automation first.
+Scalable systems.
+Developer experience matters.
+```
+
+---
+
+# /github
+
+```bash
+# coming soon
+github_username=""
+```
+
+---
+
+# /x
+
+```bash
+# coming soon
+x_profile=""
+```
+
+---
+
+# /contact
+
+```bash
+email=""
+```
+
+---
+
+# /stats
+
+<div align="center">
+
+<img height="170" src="https://github-readme-stats.vercel.app/api?username=YOUR_USERNAME&show_icons=true&theme=github_dark&hide_border=true" />
+
+<img height="170" src="https://github-readme-streak-stats.herokuapp.com/?user=YOUR_USERNAME&theme=github-dark-blue&hide_border=true" />
+
+</div>
+
+---
+
+# /activity-graph
+
+<div align="center">
+
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=YOUR_USERNAME&theme=github-compact&hide_border=true" width="100%" />
+
+</div>
+
+---
+
+# /philosophy
+
+```txt
+Technology should simplify complexity,
+not create more of it.
+```
+
+---
+
+# /environment
+
+```bash
+OS        -> Linux
+Editor    -> VS Code
+Terminal  -> Bash / Zsh
+Workflow  -> Git + Docker + Cloud
+```
+
+---
+
+# /status
+
+```bash
+Currently building:
+> SaaS platforms
+> Automation systems
+> AI integrations
+> Full stack applications
+```
+
+---
+
+<div align="center">
+
+```txt
+ASBIT © 2026
+```
+
+</div>
+```
