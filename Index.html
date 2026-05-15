@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A. Sebastian — Full Stack Developer</title>
+<meta name="description" content="Full Stack Developer · Systems Engineer · SaaS · AI · DevOps · Colombia">
+<meta property="og:title" content="A. Sebastian — Full Stack Developer">
+<meta property="og:description" content="Building full stack applications, SaaS platforms, and mobile apps.">
+<meta name="theme-color" content="#0d1117">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d1117;--bg2:#161b22;--bg3:#21262d;
+  --border:#30363d;--border2:#484f58;
+  --accent:#58a6ff;--accent-glow:rgba(88,166,255,.12);
+  --txt:#e6edf3;--txt2:#8b949e;--txt3:#484f58;
+  --green:#3fb950;--orange:#d29922;--red:#f85149;--purple:#bc8cff;
+  --mono:'JetBrains Mono',monospace;
+  --r:8px;--r2:12px;--ease:.2s ease;
+}
+[data-theme="light"]{
+  --bg:#ffffff;--bg2:#f6f8fa;--bg3:#eaeef2;
+  --border:#d0d7de;--border2:#afb8c1;
+  --accent:#0969da;--accent-glow:rgba(9,105,218,.08);
+  --txt:#1f2328;--txt2:#656d76;--txt3:#afb8c1;
+  --green:#1a7f37;--orange:#9a6700;--red:#cf222e;--purple:#8250df;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--mono);background:var(--bg);color:var(--txt);
+  transition:background .3s,color .3s;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--border2)}
+
+/* ── scroll progress ── */
+#prog{position:fixed;top:0;left:0;right:0;height:2px;background:var(--accent);width:0%;z-index:999;transition:width .1s linear}
+
+/* ── nav ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2rem;height:58px;
+  background:rgba(13,17,23,.88);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  transition:background .3s,border-color .3s;
+}
+[data-theme="light"] nav{background:rgba(255,255,255,.88)}
+.logo{font-size:.95rem;font-weight:700;color:var(--txt);text-decoration:none;letter-spacing:-.02em}
+.logo em{color:var(--accent);font-style:normal}
+.nav-links{display:flex;align-items:center;gap:.15rem;list-style:none}
+.nav-links a{
+  font-size:.7rem;color:var(--txt2);text-decoration:none;
+  padding:.4rem .7rem;border-radius:var(--r);letter-spacing:.03em;
+  transition:color var(--ease),background var(--ease);
+}
+.nav-links a:hover,.nav-links a.active{color:var(--txt);background:var(--bg3)}
+.nav-r{display:flex;align-items:center;gap:.4rem}
+.ico-btn{
+  width:32px;height:32px;border:1px solid var(--border);background:transparent;
+  border-radius:var(--r);cursor:pointer;display:flex;align-items:center;
+  justify-content:center;color:var(--txt2);transition:all var(--ease);
+}
+.ico-btn:hover{border-color:var(--border2);color:var(--txt);background:var(--bg3)}
+.lang-btn{
+  font-size:.68rem;font-weight:700;padding:0 .75rem;width:auto;
+  letter-spacing:.06em;
+}
+
+/* ── animations ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes glow-pulse{0%,100%{opacity:.6}50%{opacity:1}}
+
+.a0{animation:fadeDown .5s ease .1s both}
+.a1{animation:fadeUp .6s ease .25s both}
+.a2{animation:fadeUp .6s ease .35s both}
+.a3{animation:fadeUp .6s ease .45s both}
+.a4{animation:fadeUp .6s ease .55s both}
+.a5{animation:fadeUp .6s ease .65s both}
+.a6{animation:fadeUp .6s ease .75s both}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+
+/* ── hero ── */
+.hero{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;padding:7rem 2rem 4rem;
+}
+.grid-bg{
+  position:absolute;inset:0;
+  background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:44px 44px;opacity:.25;
+  mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,black 0%,transparent 100%);
+  -webkit-mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,black 0%,transparent 100%);
+}
+.hero-glow{
+  position:absolute;width:700px;height:700px;
+  background:radial-gradient(circle,var(--accent-glow) 0%,transparent 65%);
+  top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;
+  animation:glow-pulse 4s ease-in-out infinite;
+}
+.hero-inner{position:relative;z-index:1;max-width:880px;width:100%}
+.badge{
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-size:.72rem;color:var(--green);
+  border:1px solid rgba(63,185,80,.3);background:rgba(63,185,80,.07);
+  padding:.32rem .8rem;border-radius:100px;margin-bottom:1.6rem;
+}
+.badge-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+h1{
+  font-size:clamp(2.6rem,7.5vw,5.2rem);font-weight:700;
+  letter-spacing:-.035em;line-height:1.04;margin-bottom:1rem;
+}
+h1 .acc{color:var(--accent)}
+.hero-sub{
+  font-size:clamp(.95rem,2.2vw,1.2rem);color:var(--txt2);
+  margin-bottom:1.5rem;min-height:1.8rem;
+}
+.cursor{
+  display:inline-block;width:2px;height:1.1em;background:var(--accent);
+  margin-left:1px;vertical-align:middle;animation:blink 1s step-end infinite;
+}
+.hero-p{
+  font-size:.9rem;color:var(--txt2);line-height:1.8;
+  max-width:520px;margin-bottom:2rem;
+}
+.hero-cta{display:flex;gap:.7rem;flex-wrap:wrap}
+.btn-p{
+  font-size:.75rem;font-weight:500;padding:.65rem 1.3rem;
+  background:var(--accent);color:#0d1117;border:none;border-radius:var(--r);
+  cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;
+  transition:all var(--ease);letter-spacing:.02em;
+}
+.btn-p:hover{opacity:.88;transform:translateY(-2px)}
+.btn-o{
+  font-size:.75rem;font-weight:500;padding:.65rem 1.3rem;
+  background:transparent;color:var(--txt);
+  border:1px solid var(--border);border-radius:var(--r);
+  cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;
+  transition:all var(--ease);letter-spacing:.02em;
+}
+.btn-o:hover{border-color:var(--border2);background:var(--bg3);transform:translateY(-2px)}
+.stats{
+  display:flex;gap:2.2rem;margin-top:3rem;
+  padding-top:2rem;border-top:1px solid var(--border);
+  flex-wrap:wrap;
+}
+.stat-n{font-size:1.5rem;font-weight:700;line-height:1}
+.stat-n em{color:var(--accent);font-style:normal}
+.stat-l{font-size:.65rem;color:var(--txt3);letter-spacing:.07em;margin-top:.3rem}
+
+/* ── divider ── */
+.sep{height:1px;background:var(--border);max-width:900px;margin:0 auto}
+
+/* ── section base ── */
+section{padding:5rem 2rem;max-width:900px;margin:0 auto}
+.s-label{
+  font-size:.68rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:.65rem;display:flex;align-items:center;gap:.4rem;
+}
+.s-label::before{content:'//';opacity:.45}
+h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:700;letter-spacing:-.025em;margin-bottom:.75rem}
+h3{font-size:1rem;font-weight:600;letter-spacing:-.01em}
+
+/* ── about ── */
+.about-g{display:grid;grid-template-columns:1fr 1fr;gap:1.75rem;margin-top:2rem}
+.about-txt{font-size:.875rem;color:var(--txt2);line-height:1.85}
+.about-txt p{margin-bottom:1rem}
+.about-txt strong{color:var(--txt);font-weight:500}
+.card{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--r2);padding:1.4rem;
+  transition:border-color var(--ease),transform var(--ease);
+}
+.card:hover{border-color:var(--border2)}
+.info-row{
+  display:flex;align-items:flex-start;gap:.75rem;
+  padding:.7rem 0;border-bottom:1px solid var(--border);font-size:.82rem;
+}
+.info-row:last-child{border-bottom:none;padding-bottom:0}
+.info-ico{font-size:.95rem;min-width:18px;margin-top:.05rem}
+.info-lbl{font-size:.62rem;color:var(--txt3);letter-spacing:.06em;margin-bottom:.15rem}
+.info-val{color:var(--txt);font-size:.82rem}
+
+/* ── terminal ── */
+.term{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--r2);overflow:hidden;margin-top:1.75rem;
+}
+.term-bar{
+  background:var(--bg3);padding:.55rem 1rem;display:flex;align-items:center;
+  gap:.45rem;border-bottom:1px solid var(--border);
+}
+.dot{width:10px;height:10px;border-radius:50%}
+.dr{background:#ff5f56}.dy{background:#ffbd2e}.dg{background:#27c93f}
+.term-file{font-size:.68rem;color:var(--txt3);margin-left:.4rem}
+.term-body{padding:1.25rem 1.5rem;font-size:.78rem;line-height:1.8}
+.tc{color:var(--txt2)}.tg{color:var(--green)}.tb{color:var(--accent)}
+.tp{color:var(--purple)}.to{color:var(--orange)}.tm{color:var(--txt3)}
+
+/* ── areas ── */
+.chips{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:1.75rem}
+.chip{
+  font-size:.72rem;padding:.45rem .95rem;
+  border:1px solid var(--border);border-radius:100px;
+  color:var(--txt2);background:var(--bg2);
+  transition:all var(--ease);cursor:default;
+}
+.chip:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow);transform:translateY(-2px)}
+
+/* ── stack ── */
+.stack-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.9rem;margin-top:2rem}
+.s-card{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--r2);padding:1.25rem;
+  transition:border-color var(--ease),transform var(--ease);
+}
+.s-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.s-cat{font-size:.65rem;color:var(--txt3);letter-spacing:.09em;text-transform:uppercase;margin-bottom:.75rem;display:flex;align-items:center;gap:.4rem}
+.tags{display:flex;flex-wrap:wrap;gap:.38rem}
+.tag{
+  font-size:.7rem;padding:.22rem .55rem;border-radius:4px;
+  background:var(--bg3);color:var(--txt2);border:1px solid var(--border);
+  transition:all var(--ease);
+}
+.tag:hover{color:var(--txt);border-color:var(--border2)}
+.tl{border-color:rgba(188,140,255,.3);color:var(--purple)}
+.tf{border-color:rgba(88,166,255,.3);color:var(--accent)}
+.tn{border-color:rgba(63,185,80,.3);color:var(--green)}
+.td{border-color:rgba(210,153,34,.3);color:var(--orange)}
+.tv{border-color:rgba(248,81,73,.3);color:var(--red)}
+.span2{grid-column:1/-1}
+
+/* ── projects ── */
+.p-grid{display:grid;gap:.9rem;margin-top:1.5rem}
+.p-card{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--r2);padding:1.5rem;
+  position:relative;overflow:hidden;
+  transition:border-color .3s,transform .3s;
+}
+.p-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:transparent;transition:background .3s;
+}
+.p-card:hover{border-color:var(--border2);transform:translateY(-3px)}
+.p-card.pro:hover::before{background:var(--accent)}
+.p-card.pers:hover::before{background:var(--green)}
+.p-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:.75rem;gap:.75rem}
+.p-name{font-size:.95rem;font-weight:600;display:flex;align-items:center;gap:.4rem}
+.p-badge{
+  font-size:.62rem;padding:.18rem .55rem;border-radius:100px;
+  font-weight:600;letter-spacing:.05em;white-space:nowrap;
+}
+.b-pro{background:rgba(88,166,255,.1);color:var(--accent);border:1px solid rgba(88,166,255,.3)}
+.b-pers{background:rgba(63,185,80,.1);color:var(--green);border:1px solid rgba(63,185,80,.3)}
+.p-desc{font-size:.84rem;color:var(--txt2);line-height:1.7;margin-bottom:1rem}
+.p-tags{display:flex;flex-wrap:wrap;gap:.32rem}
+.p-tags .tag{font-size:.66rem;padding:.18rem .5rem}
+.p-sub{
+  font-size:.68rem;color:var(--txt3);letter-spacing:.07em;text-transform:uppercase;
+  margin:2.5rem 0 1rem;display:flex;align-items:center;gap:.4rem;
+}
+.p-sub::before{content:'';flex:1;height:1px;background:var(--border)}
+
+/* ── connect ── */
+.c-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;margin-top:2rem}
+.c-card{
+  background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);
+  padding:1.5rem 1rem;text-align:center;text-decoration:none;
+  color:var(--txt2);display:flex;flex-direction:column;align-items:center;gap:.4rem;
+  transition:all var(--ease);
+}
+.c-card:hover{border-color:var(--border2);color:var(--txt);transform:translateY(-2px);background:var(--bg3)}
+.c-ico{font-size:1.4rem;margin-bottom:.2rem}
+.c-name{font-size:.8rem;font-weight:600;color:var(--txt)}
+.c-handle{font-size:.7rem;color:var(--txt3)}
+
+/* ── footer ── */
+footer{
+  border-top:1px solid var(--border);padding:2rem;text-align:center;
+  max-width:900px;margin:0 auto;
+}
+.foot-txt{font-size:.68rem;color:var(--txt3);letter-spacing:.02em}
+.foot-txt em{color:var(--accent);font-style:normal}
+
+/* ── responsive ── */
+@media(max-width:700px){
+  nav{padding:0 1rem}
+  .nav-links{display:none}
+  section{padding:3.5rem 1.25rem}
+  .about-g{grid-template-columns:1fr}
+  .c-grid{grid-template-columns:1fr}
+  .stats{gap:1.5rem}
+  h1{font-size:2.5rem}
+}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="logo">asbit<em>.</em>dev</a>
+  <ul class="nav-links">
+    <li><a href="#about" data-i18n="nav.about">about</a></li>
+    <li><a href="#stack" data-i18n="nav.stack">stack</a></li>
+    <li><a href="#projects" data-i18n="nav.projects">projects</a></li>
+    <li><a href="#connect" data-i18n="nav.connect">connect</a></li>
+  </ul>
+  <div class="nav-r">
+    <button class="ico-btn lang-btn" id="langBtn">EN</button>
+    <button class="ico-btn" id="themeBtn" aria-label="Toggle theme">
+      <svg id="themeIco" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="home" style="max-width:100%;margin:0">
+  <div class="grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="badge a0"><span class="badge-dot"></span><span data-i18n="hero.badge">available for projects</span></div>
+    <h1 class="a1">A. <span class="acc">Sebastian</span></h1>
+    <p class="hero-sub a2"><span id="typing"></span><span class="cursor"></span></p>
+    <p class="hero-p a3" data-i18n="hero.desc">Systems engineering student and systems analyst at SENA. I build full stack web applications, SaaS platforms, and mobile apps — focused on clean architecture, automation, and developer experience.</p>
+    <div class="hero-cta a4">
+      <a href="#projects" class="btn-p" data-i18n="hero.cta1">→ view projects</a>
+      <a href="#connect" class="btn-o" data-i18n="hero.cta2">get in touch</a>
+    </div>
+    <div class="stats a5">
+      <div>
+        <div class="stat-n">8<em>+</em></div>
+        <div class="stat-l" data-i18n="stat.areas">FOCUS AREAS</div>
+      </div>
+      <div>
+        <div class="stat-n">7<em>+</em></div>
+        <div class="stat-l" data-i18n="stat.projects">PROJECTS</div>
+      </div>
+      <div>
+        <div class="stat-n">15<em>+</em></div>
+        <div class="stat-l" data-i18n="stat.tech">TECHNOLOGIES</div>
+      </div>
+      <div>
+        <div class="stat-n">∞</div>
+        <div class="stat-l" data-i18n="stat.commits">COMMITS</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sep"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="reveal">
+    <p class="s-label" data-i18n="lbl.about">about me</p>
+    <h2 data-i18n="h.about">Building things that scale.</h2>
+  </div>
+  <div class="about-g">
+    <div class="reveal d1">
+      <div class="about-txt">
+        <p data-i18n="about.p1">I'm <strong>A. Sebastian</strong>, a systems engineering student and systems analyst at <strong>SENA</strong>, Colombia's national vocational training institution.</p>
+        <p data-i18n="about.p2">I design and build full stack applications — from backend APIs and cloud infrastructure to polished frontend interfaces and mobile experiences. My work spans SaaS platforms, internal tooling, automation pipelines, and more.</p>
+        <p data-i18n="about.p3">Drawn to problems at the intersection of <strong>engineering and product</strong> — where clean code meets real-world impact. Always shipping.</p>
+      </div>
+    </div>
+    <div class="reveal d2">
+      <div class="card">
+        <div class="info-row">
+          <span class="info-ico">🎓</span>
+          <div>
+            <div class="info-lbl" data-i18n="lbl.edu">EDUCATION</div>
+            <div class="info-val">Ingeniería en Sistemas</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="info-ico">💼</span>
+          <div>
+            <div class="info-lbl" data-i18n="lbl.role">ROLE</div>
+            <div class="info-val" data-i18n="val.role">Systems Analyst — SENA</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="info-ico">📍</span>
+          <div>
+            <div class="info-lbl" data-i18n="lbl.loc">LOCATION</div>
+            <div class="info-val">Colombia 🇨🇴</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="info-ico">🔭</span>
+          <div>
+            <div class="info-lbl" data-i18n="lbl.focus">FOCUS</div>
+            <div class="info-val">SaaS · AI · DevOps · Mobile</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="info-ico">🌐</span>
+          <div>
+            <div class="info-lbl" data-i18n="lbl.domain">DOMAIN</div>
+            <div class="info-val" style="color:var(--accent)">asbit.dev</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- terminal -->
+  <div class="term reveal d3">
+    <div class="term-bar">
+      <span class="dot dr"></span><span class="dot dy"></span><span class="dot dg"></span>
+      <span class="term-file">~/asbit — profile.json</span>
+    </div>
+    <div class="term-body">
+      <span class="tm">// whoami</span><br>
+      <span class="tb">{</span><br>
+      &nbsp;&nbsp;<span class="tb">"name"</span>: <span class="to">"A. Sebastian"</span>,<br>
+      &nbsp;&nbsp;<span class="tb">"role"</span>: <span class="to">"Full Stack Developer"</span>,<br>
+      &nbsp;&nbsp;<span class="tb">"org"</span>: <span class="to">"SENA — Colombia"</span>,<br>
+      &nbsp;&nbsp;<span class="tb">"languages"</span>: [<span class="to">"Python"</span>, <span class="to">"TypeScript"</span>, <span class="to">"Go"</span>, <span class="to">"JavaScript"</span>],<br>
+      &nbsp;&nbsp;<span class="tb">"building"</span>: <span class="to">"SaaS · APIs · Automation · Mobile"</span>,<br>
+      &nbsp;&nbsp;<span class="tb">"domains"</span>: [<span class="to">"AI"</span>, <span class="to">"DevOps"</span>, <span class="to">"Cloud"</span>, <span class="to">"Backend"</span>],<br>
+      &nbsp;&nbsp;<span class="tb">"status"</span>: <span class="tp">true</span>&nbsp;<span class="tm">// always_shipping</span><br>
+      <span class="tb">}</span>
+    </div>
+  </div>
+
+  <!-- areas -->
+  <div class="reveal d4" style="margin-top:2.5rem">
+    <p class="s-label" data-i18n="lbl.areas">areas</p>
+    <div class="chips">
+      <span class="chip">SaaS</span>
+      <span class="chip">AI / ML</span>
+      <span class="chip" data-i18n="chip.auto">Automation</span>
+      <span class="chip">Backend</span>
+      <span class="chip">Frontend</span>
+      <span class="chip">Cloud</span>
+      <span class="chip">DevOps</span>
+      <span class="chip" data-i18n="chip.mobile">Mobile</span>
+      <span class="chip">REST APIs</span>
+      <span class="chip" data-i18n="chip.infra">Infrastructure</span>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- STACK -->
+<section id="stack">
+  <div class="reveal">
+    <p class="s-label" data-i18n="lbl.stack">tech stack</p>
+    <h2 data-i18n="h.stack">Tools I build with.</h2>
+  </div>
+  <div class="stack-g">
+    <div class="s-card reveal d1">
+      <div class="s-cat">⟨/⟩ <span data-i18n="cat.lang">Languages</span></div>
+      <div class="tags">
+        <span class="tag tl">Python</span>
+        <span class="tag tl">JavaScript</span>
+        <span class="tag tl">TypeScript</span>
+        <span class="tag tl">Go</span>
+      </div>
+    </div>
+    <div class="s-card reveal d2">
+      <div class="s-cat">◈ Frontend</div>
+      <div class="tags">
+        <span class="tag tf">React</span>
+        <span class="tag tf">Next.js</span>
+        <span class="tag tf">Vue</span>
+        <span class="tag tf">Tailwind CSS</span>
+      </div>
+    </div>
+    <div class="s-card reveal d3">
+      <div class="s-cat">⬡ Backend</div>
+      <div class="tags">
+        <span class="tag tn">Node.js</span>
+        <span class="tag tn">FastAPI</span>
+        <span class="tag tn">Flask</span>
+        <span class="tag tn">Go</span>
+      </div>
+    </div>
+    <div class="s-card reveal d4">
+      <div class="s-cat">⊛ <span data-i18n="cat.db">Databases</span></div>
+      <div class="tags">
+        <span class="tag td">PostgreSQL</span>
+        <span class="tag td">MongoDB</span>
+        <span class="tag td">Firebase</span>
+        <span class="tag td">SQLite</span>
+        <span class="tag td">Supabase</span>
+      </div>
+    </div>
+    <div class="s-card span2 reveal d1">
+      <div class="s-cat">⚙ DevOps &amp; <span data-i18n="cat.cloud">Cloud</span></div>
+      <div class="tags">
+        <span class="tag tv">Docker</span>
+        <span class="tag tv">Linux</span>
+        <span class="tag tv">GitHub Actions</span>
+        <span class="tag tv">Nginx</span>
+        <span class="tag tv">Cloudflare</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="reveal">
+    <p class="s-label" data-i18n="lbl.projects">projects</p>
+    <h2 data-i18n="h.projects">What I've shipped.</h2>
+  </div>
+
+  <p class="p-sub" data-i18n="sub.pro">professional</p>
+  <div class="p-grid">
+    <div class="p-card pro reveal d1">
+      <div class="p-head">
+        <span class="p-name">⬡ SaaS — <span data-i18n="pn.saas">Public Sector Platform</span></span>
+        <span class="p-badge b-pro" data-i18n="badge.pro">professional</span>
+      </div>
+      <p class="p-desc" data-i18n="pd.saas">SaaS platform built for Colombian public servants. Centralizes administrative workflows, document management, and internal processes for public institutions across the country.</p>
+      <div class="p-tags">
+        <span class="tag tf">React</span><span class="tag tn">FastAPI</span>
+        <span class="tag td">PostgreSQL</span><span class="tag tv">Docker</span>
+        <span class="tag tv">Cloudflare</span>
+      </div>
+    </div>
+    <div class="p-card pro reveal d2">
+      <div class="p-head">
+        <span class="p-name">⚙ SENA Admin Tools</span>
+        <span class="p-badge b-pro" data-i18n="badge.pro">professional</span>
+      </div>
+      <p class="p-desc" data-i18n="pd.admin">Suite of administrative tools for internal SENA operations. Automates repetitive institutional workflows, improves reporting, and accelerates data management processes.</p>
+      <div class="p-tags">
+        <span class="tag tl">Python</span><span class="tag tn">Flask</span>
+        <span class="tag td">SQLite</span><span class="tag tv">Linux</span>
+      </div>
+    </div>
+    <div class="p-card pro reveal d3">
+      <div class="p-head">
+        <span class="p-name">📱 SENA Aprendices</span>
+        <span class="p-badge b-pro" data-i18n="badge.pro">professional</span>
+      </div>
+      <p class="p-desc" data-i18n="pd.mobile">Mobile application for SENA apprentices. Provides access to academic resources, schedules, communications, and institutional services from any device, anytime.</p>
+      <div class="p-tags">
+        <span class="tag tl">TypeScript</span><span class="tag tf">React</span>
+        <span class="tag td">Firebase</span>
+      </div>
+    </div>
+    <div class="p-card pro reveal d4">
+      <div class="p-head">
+        <span class="p-name">🌐 SENA Network — <span data-i18n="pn.net">Infra DB</span></span>
+        <span class="p-badge b-pro" data-i18n="badge.pro">professional</span>
+      </div>
+      <p class="p-desc" data-i18n="pd.net">Web application for network infrastructure management at SENA. Maps, documents, and monitors database and network resources across the institution's infrastructure.</p>
+      <div class="p-tags">
+        <span class="tag tf">Vue</span><span class="tag tn">Node.js</span>
+        <span class="tag td">PostgreSQL</span><span class="tag tv">Nginx</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="p-sub" data-i18n="sub.pers">personal</p>
+  <div class="p-grid">
+    <div class="p-card pers reveal d1">
+      <div class="p-head">
+        <span class="p-name">⬡ GENERador-exogena</span>
+        <span class="p-badge b-pers" data-i18n="badge.pers">personal</span>
+      </div>
+      <p class="p-desc" data-i18n="pd.gen">Tool for generating and processing exogenous information reports required by the Colombian tax authority (DIAN). Automates data extraction, validation, and format compliance.</p>
+      <div class="p-tags">
+        <span class="tag tl">Python</span><span class="tag tn">FastAPI</span>
+        <span class="tag td">SQLite</span>
+      </div>
+    </div>
+    <div class="p-card pers reveal d2">
+      <div class="p-head">
+        <span class="p-name">🔒 secopia</span>
+        <span class="p-badge b-pers" data-i18n="badge.pers">personal</span>
+      </div>
+      <p class="p-desc" data-i18n="pd.secopia">Security-focused project. Handles sensitive data workflows with emphasis on encryption, access control, and secure backup mechanisms for critical information.</p>
+      <div class="p-tags">
+        <span class="tag tl">Python</span><span class="tag tl">Go</span>
+        <span class="tag tv">Docker</span>
+      </div>
+    </div>
+    <div class="p-card pers reveal d3">
+      <div class="p-head">
+        <span class="p-name">🤖 mcp secopia</span>
+        <span class="p-badge b-pers" data-i18n="badge.pers">personal</span>
+      </div>
+      <p class="p-desc" data-i18n="pd.mcp">MCP (Model Context Protocol) integration for secopia. Connects AI models directly to the secopia backend, enabling intelligent automation and context-aware security operations.</p>
+      <div class="p-tags">
+        <span class="tag tl">TypeScript</span><span class="tag tn">Node.js</span>
+        <span class="tag tl">Python</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- CONNECT -->
+<section id="connect">
+  <div class="reveal">
+    <p class="s-label" data-i18n="lbl.connect">connect</p>
+    <h2 data-i18n="h.connect">Let's build something.</h2>
+    <p style="font-size:.88rem;color:var(--txt2);margin-top:.65rem;max-width:480px" data-i18n="p.connect">Open to collaborations, freelance projects, and interesting technical conversations.</p>
+  </div>
+  <div class="c-grid reveal d1">
+    <a href="https://github.com/YOUR_GITHUB" class="c-card" target="_blank" rel="noopener">
+      <div class="c-ico">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.23c-3.34.72-4.03-1.42-4.03-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0C17 4.68 18 5 18 5c.66 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.19.69.8.58C20.57 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z"/>
+        </svg>
+      </div>
+      <span class="c-name">GitHub</span>
+      <span class="c-handle">@YOUR_GITHUB</span>
+    </a>
+    <a href="https://x.com/YOUR_X" class="c-card" target="_blank" rel="noopener">
+      <div class="c-ico">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-4.71-6.23-5.4 6.23H2.75l7.73-8.84L1.25 2.25h6.83l4.71 6.23zm-1.16 17.52h1.83L7.08 4.13H5.12z"/>
+        </svg>
+      </div>
+      <span class="c-name">X / Twitter</span>
+      <span class="c-handle">@YOUR_X</span>
+    </a>
+    <a href="mailto:YOUR@EMAIL.COM" class="c-card">
+      <div class="c-ico">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <polyline points="2,4 12,13 22,4"/>
+        </svg>
+      </div>
+      <span class="c-name" data-i18n="lbl.email">Email</span>
+      <span class="c-handle">YOUR@EMAIL.COM</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="foot-txt">
+    <em>A. Sebastian</em> · asbit.dev · <span data-i18n="foot">built with</span> ♥ &amp; vim · <span id="yr"></span>
+  </p>
+</footer>
+
+<script>
+/* ── translations ── */
+const T = {
+  en: {
+    "nav.about":"about","nav.stack":"stack","nav.projects":"projects","nav.connect":"connect",
+    "hero.badge":"available for projects",
+    "hero.desc":"Systems engineering student and systems analyst at SENA. I build full stack web applications, SaaS platforms, and mobile apps — focused on clean architecture, automation, and developer experience.",
+    "hero.cta1":"→ view projects","hero.cta2":"get in touch",
+    "stat.areas":"FOCUS AREAS","stat.projects":"PROJECTS","stat.tech":"TECHNOLOGIES","stat.commits":"COMMITS",
+    "lbl.about":"about me","h.about":"Building things that scale.",
+    "about.p1":"I'm <strong>A. Sebastian</strong>, a systems engineering student and systems analyst at <strong>SENA</strong>, Colombia's national vocational training institution.",
+    "about.p2":"I design and build full stack applications — from backend APIs and cloud infrastructure to polished frontend interfaces and mobile experiences. My work spans SaaS platforms, internal tooling, automation pipelines, and more.",
+    "about.p3":"Drawn to problems at the intersection of <strong>engineering and product</strong> — where clean code meets real-world impact. Always shipping.",
+    "lbl.edu":"EDUCATION","lbl.role":"ROLE","val.role":"Systems Analyst — SENA",
+    "lbl.loc":"LOCATION","lbl.focus":"FOCUS","lbl.domain":"DOMAIN",
+    "chip.auto":"Automation","chip.mobile":"Mobile","chip.infra":"Infrastructure",
+    "lbl.areas":"areas","lbl.stack":"tech stack","h.stack":"Tools I build with.",
+    "cat.lang":"Languages","cat.db":"Databases","cat.cloud":"Cloud",
+    "lbl.projects":"projects","h.projects":"What I've shipped.",
+    "sub.pro":"— professional","sub.pers":"— personal",
+    "badge.pro":"professional","badge.pers":"personal",
+    "pn.saas":"Public Sector Platform","pn.net":"Infra DB",
+    "pd.saas":"SaaS platform built for Colombian public servants. Centralizes administrative workflows, document management, and internal processes for public institutions across the country.",
+    "pd.admin":"Suite of administrative tools for internal SENA operations. Automates repetitive institutional workflows, improves reporting, and accelerates data management processes.",
+    "pd.mobile":"Mobile application for SENA apprentices. Provides access to academic resources, schedules, communications, and institutional services from any device, anytime.",
+    "pd.net":"Web application for network infrastructure management at SENA. Maps, documents, and monitors database and network resources across the institution's infrastructure.",
+    "pd.gen":"Tool for generating and processing exogenous information reports required by the Colombian tax authority (DIAN). Automates data extraction, validation, and format compliance.",
+    "pd.secopia":"Security-focused project. Handles sensitive data workflows with emphasis on encryption, access control, and secure backup mechanisms for critical information.",
+    "pd.mcp":"MCP (Model Context Protocol) integration for secopia. Connects AI models directly to the secopia backend, enabling intelligent automation and context-aware security operations.",
+    "lbl.connect":"connect","h.connect":"Let's build something.",
+    "p.connect":"Open to collaborations, freelance projects, and interesting technical conversations.",
+    "lbl.email":"Email","foot":"built with",
+    "roles":["Full Stack Developer","Systems Engineer","Backend Architect","SaaS Builder","DevOps Enthusiast","Mobile Developer"]
+  },
+  es: {
+    "nav.about":"sobre mí","nav.stack":"stack","nav.projects":"proyectos","nav.connect":"contacto",
+    "hero.badge":"disponible para proyectos",
+    "hero.desc":"Estudiante de ingeniería en sistemas y analista en el SENA. Construyo aplicaciones web full stack, plataformas SaaS y apps móviles — enfocado en arquitectura limpia, automatización y experiencia de desarrollo.",
+    "hero.cta1":"→ ver proyectos","hero.cta2":"escribeme",
+    "stat.areas":"ÁREAS","stat.projects":"PROYECTOS","stat.tech":"TECNOLOGÍAS","stat.commits":"COMMITS",
+    "lbl.about":"sobre mí","h.about":"Construyendo cosas que escalan.",
+    "about.p1":"Soy <strong>A. Sebastian</strong>, estudiante de ingeniería en sistemas y analista de sistemas en el <strong>SENA</strong>, el Servicio Nacional de Aprendizaje de Colombia.",
+    "about.p2":"Diseño y construyo aplicaciones full stack — desde APIs backend e infraestructura cloud hasta interfaces frontend y experiencias móviles. Mi trabajo abarca plataformas SaaS, herramientas internas, pipelines de automatización y más.",
+    "about.p3":"Me atraen los problemas en la intersección de <strong>ingeniería y producto</strong> — donde el código limpio se encuentra con el impacto real. Siempre enviando.",
+    "lbl.edu":"EDUCACIÓN","lbl.role":"ROL","val.role":"Analista de Sistemas — SENA",
+    "lbl.loc":"UBICACIÓN","lbl.focus":"ENFOQUE","lbl.domain":"DOMINIO",
+    "chip.auto":"Automatización","chip.mobile":"Móvil","chip.infra":"Infraestructura",
+    "lbl.areas":"áreas","lbl.stack":"stack tecnológico","h.stack":"Herramientas con las que construyo.",
+    "cat.lang":"Lenguajes","cat.db":"Bases de Datos","cat.cloud":"Cloud",
+    "lbl.projects":"proyectos","h.projects":"Lo que he lanzado.",
+    "sub.pro":"— profesionales","sub.pers":"— personales",
+    "badge.pro":"profesional","badge.pers":"personal",
+    "pn.saas":"Plataforma Sector Público","pn.net":"Infra BD",
+    "pd.saas":"Plataforma SaaS construida para funcionarios públicos colombianos. Centraliza flujos administrativos, gestión documental y procesos internos de instituciones públicas a nivel nacional.",
+    "pd.admin":"Suite de herramientas administrativas para operaciones internas del SENA. Automatiza flujos institucionales repetitivos, mejora reportes y acelera la gestión de datos.",
+    "pd.mobile":"Aplicación móvil para aprendices del SENA. Provee acceso a recursos académicos, horarios, comunicaciones y servicios institucionales desde cualquier dispositivo.",
+    "pd.net":"Aplicación web para gestión de infraestructura de red en el SENA. Mapea, documenta y monitorea recursos de base de datos y red de la institución.",
+    "pd.gen":"Herramienta para generación y procesamiento de información exógena requerida por la DIAN. Automatiza extracción de datos, validación y cumplimiento del formato oficial.",
+    "pd.secopia":"Proyecto orientado a seguridad. Maneja flujos de datos sensibles con énfasis en cifrado, control de acceso y mecanismos de respaldo seguro para información crítica.",
+    "pd.mcp":"Integración MCP (Model Context Protocol) para secopia. Conecta modelos de IA directamente al backend de secopia, habilitando automatización inteligente y operaciones de seguridad conscientes del contexto.",
+    "lbl.connect":"contacto","h.connect":"Construyamos algo.",
+    "p.connect":"Abierto a colaboraciones, proyectos freelance y conversaciones técnicas interesantes.",
+    "lbl.email":"Correo","foot":"hecho con",
+    "roles":["Full Stack Developer","Ingeniero de Sistemas","Arquitecto Backend","Builder de SaaS","Entusiasta DevOps","Desarrollador Móvil"]
+  }
+};
+
+let lang = localStorage.getItem('lang') || 'en';
+let theme = localStorage.getItem('theme') || 'dark';
+
+function applyLang(l) {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = T[l][el.dataset.i18n];
+    if (v) el.innerHTML = v;
+  });
+  document.documentElement.lang = l;
+  document.getElementById('langBtn').textContent = l === 'en' ? 'EN' : 'ES';
+}
+
+function applyTheme(t) {
+  document.documentElement.dataset.theme = t;
+  const ico = document.getElementById('themeIco');
+  ico.innerHTML = t === 'dark'
+    ? '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>'
+    : '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+}
+
+document.getElementById('langBtn').addEventListener('click', () => {
+  lang = lang === 'en' ? 'es' : 'en';
+  localStorage.setItem('lang', lang);
+  applyLang(lang);
+  resetTyping();
+});
+document.getElementById('themeBtn').addEventListener('click', () => {
+  theme = theme === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('theme', theme);
+  applyTheme(theme);
+});
+
+/* ── typing ── */
+let tIdx=0,cIdx=0,del=false,tTO;
+const tEl = document.getElementById('typing');
+function type(){
+  const roles=T[lang].roles, word=roles[tIdx%roles.length];
+  if(!del){ tEl.textContent=word.slice(0,++cIdx); if(cIdx===word.length){del=true;tTO=setTimeout(type,2100);return} }
+  else{ tEl.textContent=word.slice(0,--cIdx); if(cIdx===0){del=false;tIdx++} }
+  tTO=setTimeout(type,del?55:85);
+}
+function resetTyping(){clearTimeout(tTO);cIdx=0;del=false;tIdx=0;tEl.textContent='';type()}
+
+/* ── scroll reveal ── */
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in') });
+},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* ── scroll progress & nav active ── */
+const prog = document.getElementById('prog');
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  const s=document.documentElement;
+  prog.style.width=(s.scrollTop/(s.scrollHeight-s.clientHeight)*100)+'%';
+  let cur='';
+  sections.forEach(sec=>{
+    if(window.scrollY>=sec.offsetTop-120) cur=sec.id;
+  });
+  navLinks.forEach(a=>{
+    a.classList.toggle('active',a.getAttribute('href')==='#'+cur);
+  });
+},{passive:true});
+
+/* ── init ── */
+document.getElementById('yr').textContent = new Date().getFullYear();
+applyLang(lang);
+applyTheme(theme);
+type();
+</script>
+</body>
+</html>
